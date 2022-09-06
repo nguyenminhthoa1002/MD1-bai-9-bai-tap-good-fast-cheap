@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="range" id="fast" onclick="changeFast()" min="0" max="5">
+<label>FAST</label> <br>
+<input type="range" id="good" onclick="changeGood()" min="0" max="5">
+<label>GOOD</label> <br>
+<input type="range" id="cheap" onclick="changeCheap()" min="0" max="5">
+<label>CHEAP</label> <br>
+<script>
+    let fast = document.getElementById('fast');
+    let good = document.getElementById('good');
+    let cheap = document.getElementById('cheap');
+    let isFast =false;
+    let isGood =false;
+    let isCheap =false;
+    function changeFast(){
+        isFast = !isFast;
+        if (isFast){
+            fast.value = 5;
+        } else{
+            fast.value = 0;
+        }
+        if (isFast&&isGood){
+            isCheap = false;
+            cheap.value = 0;
+        }
+    }
+    function changeGood(){
+        isGood = !isGood;
+        if (isGood){
+            good.value = 5;
+        } else{
+            good.value = 0;
+        }
+        if (isGood&&isCheap){
+            isFast = false;
+            fast.value = 0;
+        }
+    }
+    function changeCheap(){
+        isCheap = !isCheap;
+        if (isCheap){
+            cheap.value = 5;
+        } else{
+            cheap.value = 0;
+        }
+        if (isFast&&isCheap){
+            isGood = false;
+            good.value=0;
+        }
+    }
+</script>
+</body>
+</html>
